@@ -1,0 +1,16 @@
+{
+  "name": "boardgame",
+  "version": "1.0.0",
+  "description": "Boardgame project for CISC474",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+      "express": "*",
+      "sqlite3": "*",
+      "jade": "*"
+  },
+  "author": "Keith Yong",
+  "license": "ISC"
+}
