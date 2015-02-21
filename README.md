@@ -3,11 +3,40 @@ Decide which board game to play!
 
 ## Supported API calls
 
-`/games?players=<num_players>` returns boardgames that can support <num_players> players.
+Grab from the boardgames library.
+
+`/games`
+
+### /games options
+
+`games` number of games to return.
+
+`sortbyaverage` sort results by average rating on Board Game Geeks.
+
+`players` only show games that can support X players.
 
 ## Examples
-### players
 
-You want to play a boardgame with 4 players:
+Grab a single random game
+
+`/games`
+
+Grab twenty random games
+
+`/games?games=20`
+
+Play a single random boardgame with 4 players
 
 `/games?players=4`
+
+Grab 3 random games to play with 4 players
+
+`/games?games=3&players=4`
+
+Play the highest averaged boardgame with 2 players
+
+`/games?players=2&sortbyaverage`
+
+Play play the top four highest averaged boardgame with 6 players
+
+`/games?players=6&games=4&sortbyaverage`
