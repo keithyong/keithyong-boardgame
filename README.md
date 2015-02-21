@@ -6,5 +6,8 @@ Decide which board game to play!
 `/games?players=<num_players>` returns boardgames that can support <num_players> players.
 
 ## Examples
-* You want to play a boardgame with 4 players:
+### players
+
+You want to play a boardgame with 4 players:
+
 `/games?players=4`
