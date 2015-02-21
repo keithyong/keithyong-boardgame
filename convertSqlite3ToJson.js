@@ -93,21 +93,21 @@ async.waterfall([
 
 /* The above async.waterfall is the same as this:
  * grab_from_db(function(err, returned_json) {
-    if (err) {
-        console.log("Error grab_from_db: " + err);
-    } else {
-        format_json(returned_json, function(err, formatted_json) {
-            if (err) {
-                console.log("Error while formatting json: " + err);
-            } else {
-                write_json_to_file(formatted_json, function(err) {
-                    if (err) {
-                        console.log("Error writing formatted json to file!");
-                    } else {
-                        console.log(JSON.stringify(formatted_json, '  '));
-                    }
-                });
-            }
-        });
-    }
-});*/
+ *     if (err) {
+ *         console.log("Error grab_from_db: " + err);
+ *     } else {
+ *         format_json(returned_json, function(err, formatted_json) {
+ *             if (err) {
+ *                 console.log("Error while formatting json: " + err);
+ *             } else {
+ *                 write_json_to_file(formatted_json, function(err) {
+ *                     if (err) {
+ *                         console.log("Error writing formatted json to file!");
+ *                     } else {
+ *                         console.log(JSON.stringify(formatted_json, '  '));
+ *                     }
+ *                 });
+ *             }
+ *         });
+ *     }
+ * });*/
