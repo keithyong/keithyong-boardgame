@@ -27,7 +27,7 @@ Grab a single random game
 
 Grab twenty random games that can be played in 30 minutes or less
 
-[`/games?games=20`](http://104.131.118.167:7999/games?games=20&time=30)
+[`/games?games=20&time=30`](http://104.131.118.167:7999/games?games=20&time=30)
 
 ---------------------------------------
 
@@ -39,7 +39,7 @@ Play a single random boardgame with 4 players
 
 Grab 3 random games to play with 4 players in 69 minutes or less
 
-[`/games?games=3&players=4`](http://104.131.118.167:7999/games?games=3&players=4&time=69)
+[`/games?games=3&players=4&time=69`](http://104.131.118.167:7999/games?games=3&players=4&time=69)
 
 ---------------------------------------
 
