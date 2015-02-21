@@ -18,12 +18,6 @@ var sqlite3 = require('sqlite3').verbose(),
     async = require('async'),
     filename = 'bgg.json';
 
-
-var each = {},
-    games_json = {
-        games:{}
-    };
-
 /* Primary job is to simply grab sqlite3 file and convert it to a JSON,
  * however ugly that JSON is. */
 function grab_from_db(callback) {
