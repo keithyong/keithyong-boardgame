@@ -1,14 +1,22 @@
 var express = require('express'),
     fs = require('fs'),
     config = require('../config.js'),
+    sqliteQuery = require('../sqliteQuery.js'),
     router = express.Router();
 
+/* This code handles /games/ */
 router.get('/', function(req, res) {
-    fs.readFile(config.bgg_json_file_name, 'utf8', function(err, data) {
+    var query = '';
+    query = 'SELECT * FROM games';
+    if (typeof req.query.players !== 'undefined') {
+        query += ' WHERE minplayers<=' + req.query.players + ' AND ' + 'maxplayers>=' + req.query.players;
+    }
+    console.log(query);
+    sqliteQuery(query, function(err, rows) {
         if (err) {
-            console.log ('Error reading file ' + config.bgg_json_file_name + ': ' + err);
+            console.log(err);
         } else {
-            res.json(JSON.parse(data));
+            res.json(rows);
         }
     });
 });
