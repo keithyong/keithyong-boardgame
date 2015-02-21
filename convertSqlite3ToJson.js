@@ -16,7 +16,7 @@ var sqlite3 = require('sqlite3').verbose(),
     query = 'SELECT * FROM games',
     fs = require('fs'),
     async = require('async'),
-    filename = 'bgg.json';
+    config = require('./config.js');
 
 /* Primary job is to simply grab sqlite3 file and convert it to a JSON,
  * however ugly that JSON is. */
@@ -64,11 +64,11 @@ function format_json(json, callback) {
 
 /* Write JSON to file */
 function write_json_to_file(json, callback) {
-    fs.writeFile(filename, JSON.stringify(json, '  '), function(err) {
+    fs.writeFile(config.bgg_json_file_name, JSON.stringify(json, '  '), function(err) {
         if (err) {
             callback(err);
         } else {
-            console.log('Successfully written JSON to ' + filename + '!');
+            console.log('Successfully written JSON to ' + config.bgg_json_file_name + '!');
             callback(null);
         }
     });

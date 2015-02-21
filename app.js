@@ -1,7 +1,6 @@
 var express = require('express'),
     path = require('path'),
     app = express(),
-    dbmanager = require('./dbmanager.js'),
     gamesRouter = require('./routes/gamesRouter'),
     port = 7999;
 
