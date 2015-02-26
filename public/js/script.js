@@ -1,3 +1,6 @@
+// TODO: Checkbox does not work property
+// TODO: Maybe do a 'Show more info' instead of giving an infodump
+
 var initialGamesToShowOnLoad = 10;
 var initialLoadURL = '/games?games=' + initialGamesToShowOnLoad;
 var App = React.createClass({
@@ -40,6 +43,7 @@ var App = React.createClass({
         return (
             <div className="app">
                 <h1>Board Game Finder</h1>
+                <p>Built on React.js!</p>
                 <h3>Filter By:</h3>
                 <FilterForm onFilterSubmit={this.handleFilterSubmit}/>
                 <FilterResults data={this.state.data}/>
@@ -63,15 +67,15 @@ var FilterForm = React.createClass({
     },
     render: function() {
         return(
-            <form className="filterForm" onSubmit={this.handleSubmit}>
+            <form className="filterForm" onChange={this.handleSubmit} onSubmit={this.handleSubmit}>
                 <label for="numPlayers">Number of Players: </label>
                 <input id="numPlayers" type="number" ref="numPlayers" /><br></br>
-                <label for="numBoardGames">Number of Board Games: </label>
+                <label for="numBoardGames">Number of Board Games to Limit: </label>
                 <input id="numBoardGames" type="number" ref="numBoardGames"/><br></br>
                 <label for="playTime">How much time you have to play: </label>
                 <input id="playTime" type="number" ref="playTime"/><br></br>
-                <label for="sortAvg">Sort By Average?: </label>
-                <input id="sortAvg" type="checkbox" ref="sortAvg"/><br></br>
+                <label for="sortAvg">Sort By Average Rating?: </label>
+                <input id="sortAvg" type="checkbox" ref="sortAvg" defaultValue="checked"/><br></br>
                 <input type="submit" value="Filter"/><br></br>
             </form>
         );
@@ -80,21 +84,33 @@ var FilterForm = React.createClass({
 
 var FilterResults = React.createClass({
     render: function() {
-        boardGameNodes = this.props.data.map(function(boardGame) {
+        if (this.props.data.length === 0) {
             return (
-                <BoardGame 
-                boardGameName={boardGame.objectname}
-                minPlayers={boardGame.minplayers}
-                maxPlayers={boardGame.maxplayers}
-                playTime={boardGame.playingtime}
-                />
+                <div className="filterResults">
+                    No results found!
+                </div>
             );
-        });
-        return (
-            <div className="fiterResults">
-                {boardGameNodes}
-            </div>
-        );
+        } else {
+            var boardGameNodes = this.props.data.map(function(boardGame) {
+                return (
+                    <BoardGame 
+                    boardGameName={boardGame.objectname}
+                    minPlayers={boardGame.minplayers}
+                    maxPlayers={boardGame.maxplayers}
+                    playTime={boardGame.playingtime}
+                    averageRating={boardGame.average}
+                    description={boardGame.description}
+                    thumbnailURL={boardGame.thumbnail}
+                    />
+                );
+            });
+        
+            return (
+                <div className="fiterResults">
+                    {boardGameNodes}
+                </div>
+            );
+        }
     }
 });
 
@@ -103,10 +119,12 @@ var BoardGame = React.createClass({
         return (
             <div className="boardGame">
                 <h3 className="boardGameName">{this.props.boardGameName}</h3>
-                <p className="minPlayers">{this.props.minPlayers}</p>
-                <p className="maxPlayers">{this.props.maxPlayers}</p>
-                <p className="playTime">{this.props.playTime}</p>
-                <img alt="boardgameimage"></img>
+                <p className="description"><i>{this.props.description}</i></p>
+                <p>Average Rating: <span className="averageRating">{this.props.averageRating}</span></p>
+                <p>Players: <span className="minPlayers">{this.props.minPlayers}</span>-<span className="maxPlayers">{this.props.maxPlayers}</span></p>
+                <p>Playing Time: <span className="playTime">{this.props.playTime}</span> minutes</p>
+                <img src={this.props.thumbnailURL} alt="boardgameimage"></img>
+                <hr></hr>
             </div>
         );
     }

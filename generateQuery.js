@@ -5,7 +5,7 @@ module.exports = function(params) {
         limit = '1',
         order = 'RANDOM()';
 
-    query = 'SELECT * FROM games';
+    query = 'SELECT * FROM games JOIN extra on games.objectid=extra.objectid';
 
     /* WHERE options */
     if (typeof params.players !== 'undefined') {
