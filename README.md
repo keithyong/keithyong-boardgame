@@ -1,6 +1,8 @@
 # Board Game Geek game finder
 Decide which board game to play!
 
+App built now, find it [here](http://bit.ly/1vDEvYK).
+
 ## Supported API calls
 
 Grab from the boardgames library.
