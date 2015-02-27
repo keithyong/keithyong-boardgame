@@ -1,0 +1,24 @@
+h1 {
+    margin: 0;
+}
+h3 {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Open Sans', 'sans-serif';
+}
+.filterForm {
+    margin-bottom: 20px;
+}
+.filterResults {
+    display: flex;
+    flex-wrap: wrap;
+}
+.filterResults .boardGame {
+    margin: 10px 10px 0 0;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    width: 200px;
+    padding: 10px;
+}
